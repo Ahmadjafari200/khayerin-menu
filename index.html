@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منوی خیرین مدرسه‌ساز</title>
+    <title>منوی خیرین مدرسه‌ساز استان مرکزی</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background: linear-gradient(to bottom, #e0f2fe, #bfdbfe); font-family: Arial, sans-serif; }
@@ -15,20 +15,28 @@
 </head>
 <body class="flex items-center justify-center min-h-screen">
     <div class="menu-container bg-white rounded-2xl shadow-xl p-8 max-w-md w-full text-center">
-        <h1 class="text-3xl font-bold text-gray-800 mb-4">خیرین مدرسه‌ساز</h1>
-        <p class="text-gray-600 mb-8">لطفاً یکی از گزینه‌ها را انتخاب کنید:</p>
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">خیرین مدرسه‌ساز استان مرکزی</h1>
+        <h2 id="kheyr-name" class="text-xl font-semibold text-gray-700 mb-2"></h2>
+        <p class="text-gray-600 mb-6">برای مشاهده بیوگرافی و عکس‌های بیشتر از این خیر نیک‌اندیش<br>لطفاً یکی از گزینه‌های زیر را انتخاب کنید:</p>
         <a id="website-link" class="btn block bg-blue-600 text-white py-3 px-4 rounded-lg mb-4 hover:bg-blue-700">وب‌سایت خیر</a>
         <a id="instagram-link" class="btn block bg-gradient-to-r from-pink-500 to-purple-600 text-white py-3 px-4 rounded-lg mb-4 hover:from-pink-600 hover:to-purple-700">اینستاگرام خیرین</a>
         <a id="youtube-link" href="https://www.youtube.com" class="btn block bg-red-600 text-white py-3 px-4 rounded-lg hover:bg-red-700">یوتیوب خیرین</a>
     </div>
+
     <script>
         const urlParams = new URLSearchParams(window.location.search);
-        const kheyr_id = urlParams.get('kheyr_id');
+        const name = urlParams.get('name') || 'نام';
+        const lastname = urlParams.get('lastname') || 'نام‌خانوادگی';
         const website_url = urlParams.get('website') || 'javascript:alert("وب‌سایت به‌زودی آماده می‌شود!")';
         const instagram_url = urlParams.get('instagram') || 'javascript:alert("اینستاگرام به‌زودی آماده می‌شود!")';
+        const youtube_url = urlParams.get('youtube') || 'javascript:alert("یوتیوب به‌زودی آماده می‌شود!")';
+
         document.getElementById('website-link').href = website_url;
         document.getElementById('instagram-link').href = instagram_url;
-        document.querySelector('h1').textContent = `خیرین مدرسه‌ساز - خیر ${kheyr_id}`;
+        document.getElementById('youtube-link').href = youtube_url;
+
+        const fullName = `خیر نیک‌اندیش<br>${name} ${lastname}`;
+        document.getElementById('kheyr-name').innerHTML = fullName;
     </script>
 </body>
 </html>
