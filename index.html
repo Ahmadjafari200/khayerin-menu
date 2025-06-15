@@ -3,40 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منوی خیرین مدرسه‌ساز استان مرکزی</title>
+    <title>خیر مدرسه‌ساز</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background: linear-gradient(to bottom, #e0f2fe, #bfdbfe); font-family: Arial, sans-serif; }
-        .menu-container { animation: slideIn 0.5s ease-in-out; }
-        @keyframes slideIn { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
-        .btn { transition: transform 0.2s, background-color 0.3s; }
-        .btn:hover { transform: scale(1.05); }
+        body {
+            font-family: 'Vazir', sans-serif;
+            background: linear-gradient(to bottom, #f0f9ff, #cce7ff);
+        }
+        .card {
+            animation: fadeIn 0.6s ease;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .btn:hover {
+            transform: scale(1.05);
+        }
     </style>
 </head>
-<body class="flex items-center justify-center min-h-screen">
-    <div class="menu-container bg-white rounded-2xl shadow-xl p-8 max-w-md w-full text-center">
-        <h1 class="text-3xl font-bold text-gray-800 mb-2">خیرین مدرسه‌ساز استان مرکزی</h1>
-        <h2 id="kheyr-name" class="text-xl font-semibold text-gray-700 mb-2"></h2>
-        <p class="text-gray-600 mb-6">برای مشاهده بیوگرافی و عکس‌های بیشتر از این خیر نیک‌اندیش<br>لطفاً یکی از گزینه‌های زیر را انتخاب کنید:</p>
-        <a id="website-link" class="btn block bg-blue-600 text-white py-3 px-4 rounded-lg mb-4 hover:bg-blue-700">وب‌سایت خیر</a>
-        <a id="instagram-link" class="btn block bg-gradient-to-r from-pink-500 to-purple-600 text-white py-3 px-4 rounded-lg mb-4 hover:from-pink-600 hover:to-purple-700">اینستاگرام خیرین</a>
-        <a id="youtube-link" href="https://www.youtube.com" class="btn block bg-red-600 text-white py-3 px-4 rounded-lg hover:bg-red-700">یوتیوب خیرین</a>
+<body class="min-h-screen flex items-center justify-center">
+    <div class="card bg-white shadow-xl rounded-2xl p-6 max-w-md w-full text-center">
+        <img id="kheyr-photo" src="" alt="عکس خیر" class="w-32 h-32 mx-auto rounded-full mb-4 shadow-md object-cover">
+        <h1 id="kheyr-name" class="text-2xl font-bold text-gray-800 mb-2"></h1>
+        <p class="text-sm text-gray-600 mb-4">خیر نیک‌اندیش مدرسه‌ساز</p>
+
+        <div class="space-y-3">
+            <a id="website-link" class="btn block bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition">وب‌سایت خیر</a>
+            <a id="instagram-link" class="btn block bg-gradient-to-r from-pink-500 to-purple-600 text-white py-2 px-4 rounded-lg hover:brightness-110 transition">اینستاگرام خیرین</a>
+            <a id="youtube-link" class="btn block bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition">یوتیوب خیرین</a>
+        </div>
     </div>
 
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const name = urlParams.get('name') || 'نام';
         const lastname = urlParams.get('lastname') || 'نام‌خانوادگی';
-        const website_url = urlParams.get('website') || 'javascript:alert("وب‌سایت به‌زودی آماده می‌شود!")';
-        const instagram_url = urlParams.get('instagram') || 'javascript:alert("اینستاگرام به‌زودی آماده می‌شود!")';
-        const youtube_url = urlParams.get('youtube') || 'javascript:alert("یوتیوب به‌زودی آماده می‌شود!")';
+        const website_url = urlParams.get('website') || 'javascript:alert("وب‌سایت به‌زودی اضافه خواهد شد.")';
+        const instagram_url = urlParams.get('instagram') || 'javascript:alert("اینستاگرام به‌زودی اضافه خواهد شد.")';
+        const youtube_url = urlParams.get('youtube') || 'javascript:alert("یوتیوب به‌زودی اضافه خواهد شد.")';
+        const photo = urlParams.get('photo') || 'https://via.placeholder.com/150';
 
+        document.getElementById('kheyr-name').textContent = `${name} ${lastname}`;
         document.getElementById('website-link').href = website_url;
         document.getElementById('instagram-link').href = instagram_url;
         document.getElementById('youtube-link').href = youtube_url;
-
-        const fullName = `خیر نیک‌اندیش<br>${name} ${lastname}`;
-        document.getElementById('kheyr-name').innerHTML = fullName;
+        document.getElementById('kheyr-photo').src = photo;
     </script>
 </body>
 </html>
